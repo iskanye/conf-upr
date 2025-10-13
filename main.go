@@ -23,8 +23,22 @@ func GetRequirements() []string {
 	return nil
 }
 
+func createGraph(name string, requirements []string) string {
+	pkg := name
+	result := "digraph " + pkg + " {"
+	for _, v := range requirements {
+		result += pkg + " -> " + v + ";\n"
+	}
+	result += "}"
+
+	return result
+}
+
 func main() {
-	for _, i := range GetRequirements() {
+	req := GetRequirements()
+	for _, i := range req {
 		fmt.Println(i)
 	}
+
+	fmt.Println(createGraph("matplotlib", req))
 }
