@@ -36,9 +36,5 @@ func createGraph(name string, requirements []string) string {
 
 func main() {
 	req := GetRequirements()
-	for _, i := range req {
-		fmt.Println(i)
-	}
-
 	fmt.Println(createGraph("matplotlib", req))
 }
