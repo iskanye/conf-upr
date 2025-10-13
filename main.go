@@ -14,9 +14,9 @@ func GetRequirements() []string {
 		return nil
 	}
 
-	for i := range strings.SplitSeq(string(result), "\n") {
+	for i := range strings.SplitSeq(string(result), "\r\n") {
 		if strings.HasPrefix(i, "Requires: ") {
-			return strings.Split(strings.TrimLeft(i, "Requires: "), ", ")
+			return strings.Split(i[10:], ", ")
 		}
 	}
 
