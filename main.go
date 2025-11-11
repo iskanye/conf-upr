@@ -6,8 +6,8 @@ import (
 	"strings"
 )
 
-func GetRequirements() []string {
-	cmd := exec.Command("py", "-m", "pip", "show", "matplotlib")
+func GetRequirements(pkg string) []string {
+	cmd := exec.Command("py", "-m", "pip", "show", pkg)
 	result, err := cmd.Output()
 	if err != nil {
 		fmt.Println(err)
@@ -35,6 +35,9 @@ func createGraph(name string, requirements []string) string {
 }
 
 func main() {
-	req := GetRequirements()
-	fmt.Println(createGraph("matplotlib", req))
+	var pkg string
+	fmt.Scanln(&pkg)
+
+	req := GetRequirements(pkg)
+	fmt.Println(createGraph(pkg, req))
 }
